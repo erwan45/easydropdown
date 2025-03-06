@@ -5,7 +5,7 @@ import State            from '../State/State';
 import body from './body';
 import head from './head';
 
-const root = (state: State, classNames: ClassNames) => {
+const root = (state: State, classNames: ClassNames, label:String = 'default') => {
     const className = composeClassName([
         classNames.root,
         [state.isDisabled, classNames.rootDisabled],
@@ -21,9 +21,10 @@ const root = (state: State, classNames: ClassNames) => {
     return (`
         <div
             class="${className}"
-            role="widget combobox"
+            role="combobox"
             aria-haspopup="listbox"
-            ${state.isOpen ? 'aria-expanded="true"' : ''}
+            aria-label="${label}"
+            ${state.isOpen ? 'aria-expanded="true"' : 'aria-expanded="false"'}
             ${state.isRequired ? 'aria-required="true"' : ''}
             ${state.isDisabled ? 'aria-disabled="true"' : ''}
             ${state.isInvalid ? 'aria-invalid="true"' : ''}

@@ -17,7 +17,7 @@ class Renderer {
     }
 
     public render(state: State, selectElement: HTMLSelectElement): Dom {
-        const html = root(state, this.classNames);
+        const html = root(state, this.classNames, selectElement.getAttribute('id'));
         const rootElement = createDomElementFromHtml(html) as HTMLDivElement;
 
         this.dom = new Dom();
@@ -62,7 +62,7 @@ class Renderer {
 
         tempSelect.parentElement.replaceChild(selectElement, tempSelect);
         selectElement.className = this.classNames.select;
-        selectElement.setAttribute('aria-hidden', 'true');
+        //selectElement.setAttribute('aria-hidden', 'true');
 
         this.dom.select = selectElement;
     }
